@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddPostForm from "./Components/AddPostForm";
+import "./App.css";
+import Posts from "./Components/Posts";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route index element={<Posts />} />
+            <Route path="/add" element={<AddPostForm />} />
+            <Route path="/add/:id" element={<AddPostForm />} />
+          </Routes>
+        </main>
+        <footer>Footer Content</footer>
+      </BrowserRouter>
     </div>
   );
 }
