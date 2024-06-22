@@ -16,7 +16,7 @@ export const UPDATE_POST = gql`
     $id: Int!
     $title: String!
     $content: String!
-    $author: String
+    $author: String!
   ) {
     updatePost(id: $id, title: $title, content: $content, author: $author) {
       id

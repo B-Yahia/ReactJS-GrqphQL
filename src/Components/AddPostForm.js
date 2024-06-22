@@ -37,8 +37,6 @@ function AddPostForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(title, content);
     if (params.id) {
       updatePost({
         variables: {
