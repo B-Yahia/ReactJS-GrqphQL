@@ -30,7 +30,8 @@ function Posts() {
   }, [data]);
   return (
     <div>
-      <h2>Posts</h2>
+      <h2>Posts : number of posts {posts.length}</h2>
+      {posts.length == 0 && <p>No post created yet</p>}
       {posts.map(({ id, title, content, author }) => (
         <div key={id} className="card">
           <h3 className="card-title">{title}</h3>

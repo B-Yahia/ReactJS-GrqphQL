@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_POST, UPDATE_POST } from "../GraphQL/mutations";
 import { useNavigate, useParams } from "react-router-dom";
-import { GET_POST } from "../GraphQL/queries";
+import { GET_POST, GET_POSTS } from "../GraphQL/queries";
 
 function AddPostForm() {
   const params = useParams();
@@ -21,7 +21,9 @@ function AddPostForm() {
   });
 
   const [addPost, { data: addData, loading: addLoading, error: addError }] =
-    useMutation(ADD_POST);
+    useMutation(ADD_POST, {
+      refetchQueries: [GET_POSTS],
+    });
   const [
     updatePost,
     { data: updateData, loading: updateLoading, error: updateError },
@@ -49,7 +51,7 @@ function AddPostForm() {
     } else {
       addPost({
         variables: {
-          ptitle: title,
+          title: title,
           content: content,
           author: author,
         },

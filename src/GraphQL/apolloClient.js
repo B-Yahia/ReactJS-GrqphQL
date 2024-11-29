@@ -5,7 +5,7 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 
-const httpLink = new HttpLink({ uri: "http://domain3.com" });
+const httpLink = new HttpLink({ uri: "http://45.137.148.234:8083" });
 
 const client = new ApolloClient({
   link: httpLink,
