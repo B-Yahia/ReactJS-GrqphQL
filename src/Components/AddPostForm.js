@@ -11,23 +11,15 @@ function AddPostForm() {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
-  const {
-    data: postData,
-    loading: postLoading,
-    error: postError,
-  } = useQuery(GET_POST, {
+  const { data: postData } = useQuery(GET_POST, {
     variables: { id: parseInt(params.id) },
     skip: !params.id,
   });
 
-  const [addPost, { data: addData, loading: addLoading, error: addError }] =
-    useMutation(ADD_POST, {
-      refetchQueries: [GET_POSTS],
-    });
-  const [
-    updatePost,
-    { data: updateData, loading: updateLoading, error: updateError },
-  ] = useMutation(UPDATE_POST);
+  const [addPost] = useMutation(ADD_POST, {
+    refetchQueries: [GET_POSTS],
+  });
+  const [updatePost] = useMutation(UPDATE_POST);
 
   useEffect(() => {
     if (postData) {
